@@ -532,32 +532,42 @@ const CollectionResults = forwardRef<CollectionResultsRef, CollectionResultsProp
       </div>
 
       {/* Tab Navigation */}
-      <div className="flex space-x-8 px-6">
+      <div className="flex justify-between items-center px-6">
+        <div className="flex space-x-8">
+          <button
+            onClick={() => setActiveTab('summary')}
+            className={`py-3 px-1 text-sm font-medium tracking-wider transition-colors relative focus:outline-none focus:ring-0 focus:border-none outline-none border-none ${
+              activeTab === 'summary'
+                ? 'text-[#0083FF]'
+                : 'text-gray-400 hover:text-gray-300'
+            }`}
+          >
+            Initial scan summary
+            {activeTab === 'summary' && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0083FF]"></div>
+            )}
+          </button>
+          <button
+            onClick={() => setActiveTab('chronological')}
+            className={`py-3 px-1 text-sm font-medium tracking-wider transition-colors relative focus:outline-none focus:ring-0 focus:border-none outline-none border-none ${
+              activeTab === 'chronological'
+                ? 'text-[#0083FF]'
+                : 'text-gray-400 hover:text-gray-300'
+            }`}
+          >
+            Chronological story
+            {activeTab === 'chronological' && (
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0083FF]"></div>
+            )}
+          </button>
+        </div>
+        
+        {/* Export Button - positioned next to tabs */}
         <button
-          onClick={() => setActiveTab('summary')}
-          className={`py-3 px-1 text-sm font-medium tracking-wider transition-colors relative focus:outline-none focus:ring-0 focus:border-none outline-none border-none ${
-            activeTab === 'summary'
-              ? 'text-[#0083FF]'
-              : 'text-gray-400 hover:text-gray-300'
-          }`}
+          onClick={() => setShowExportModal(true)}
+          className="border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white font-medium py-2 px-4 rounded-lg transition-colors bg-transparent hover:bg-gray-700/50"
         >
-          Initial scan summary
-          {activeTab === 'summary' && (
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0083FF]"></div>
-          )}
-        </button>
-        <button
-          onClick={() => setActiveTab('chronological')}
-          className={`py-3 px-1 text-sm font-medium tracking-wider transition-colors relative focus:outline-none focus:ring-0 focus:border-none outline-none border-none ${
-            activeTab === 'chronological'
-              ? 'text-[#0083FF]'
-              : 'text-gray-400 hover:text-gray-300'
-          }`}
-        >
-          Chronological story
-          {activeTab === 'chronological' && (
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#0083FF]"></div>
-          )}
+          {activeTab === 'summary' ? 'Export Summary' : 'Export chronological mix log'}
         </button>
       </div>
 
@@ -747,15 +757,7 @@ const CollectionResults = forwardRef<CollectionResultsRef, CollectionResultsProp
               </div>
             </div>
 
-            {/* Export Button */}
-            <div className="flex justify-end pt-6">
-              <button
-                onClick={() => setShowExportModal(true)}
-                className="border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white font-medium py-2 px-4 rounded-lg transition-colors bg-transparent hover:bg-gray-700/50"
-              >
-                Export Summary
-              </button>
-            </div>
+
           </>
         ) : (
           /* Chronological Story View */
@@ -781,15 +783,7 @@ const CollectionResults = forwardRef<CollectionResultsRef, CollectionResultsProp
               ))}
             </div>
 
-            {/* Export Button */}
-            <div className="flex justify-end pt-6">
-              <button
-                onClick={() => setShowExportModal(true)}
-                className="border border-gray-600 hover:border-gray-500 text-gray-300 hover:text-white font-medium py-2 px-4 rounded-lg transition-colors bg-transparent hover:bg-gray-700/50"
-              >
-                Export chronological mix log
-              </button>
-            </div>
+
           </div>
         )}
         </div>
