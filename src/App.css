@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset all potential container issues */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100vh !important;
+  width: 100vw !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Override body centering behavior */
+html, body {
+  font-family: 'Inter', sans-serif;
+  background-color: #1a202c;
+  color: #e2e8f0;
+  display: block !important;
+  place-items: unset !important;
+}
+
+/* Ensure root div takes full width */
+#root {
+  position: relative;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #2d3748;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+.progress-fill {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%);
+  background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 100% 0; }
+}
+
+
+
+/* Service selection styles */
+.service-card {
+  background-color: #2d3748;
+  border: 1px solid #4a5568;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.2s ease;
+}
+
+.service-card:hover {
+  border-color: #60a5fa;
+  background-color: #374151;
+}
+
+.service-card.selected {
+  border-color: #3b82f6;
+  background-color: #1e3a8a20;
+}
+
+.preset-button {
+  background-color: #374151;
+  border: 2px solid #4a5568;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #e2e8f0;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.preset-button:hover:not(.active) {
+  border-color: #60a5fa;
+  background-color: #4a5568;
+}
+
+.preset-button.active {
+  border-color: #3b82f6 !important;
+  background-color: #1e3a8a30 !important;
+  border-width: 2px !important;
+}
+
+.time-option {
+  background-color: #374151;
+  border: 2px solid #4a5568;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #e2e8f0;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.time-option:hover:not(.selected) {
+  border-color: #60a5fa;
+  background-color: #4a5568;
+}
+
+.time-option.selected {
+  border-color: #3b82f6 !important;
+  background-color: #1e3a8a30 !important;
+  border-width: 2px !important;
+}
+
+/* Utility classes for consistency */
+.section-card {
+  background-color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  border: 1px solid #374151;
+}
+
+/* Loading animation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Fade animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Button hover effects */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: inherit;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+textarea:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Remove focus outline for radio buttons */
+input[type="radio"]:focus {
+  outline: none;
+}
+
+/* Custom input styles */
+input[type="checkbox"] {
+  accent-color: #3b82f6;
+}
+
+/* File input styling */
+input[type="file"]::file-selector-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin-right: 1rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: #2563eb;
+}
