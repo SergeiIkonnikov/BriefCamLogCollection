@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 // Configured for GitHub Pages deployment
 export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: command === 'build' ? '/LogCollection/' : '/',
+  base: command === 'build' ? '/BriefCamLogCollection/' : '/',
 }))
